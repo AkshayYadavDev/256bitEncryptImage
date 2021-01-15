@@ -1,6 +1,9 @@
 package com.example.a256bitencrypt;
 
 import android.app.Activity;
+import android.content.ClipData;
+import android.content.ClipboardManager;
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -11,6 +14,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
@@ -90,9 +94,29 @@ public class MainActivity extends AppCompatActivity {
                 System.out.println(encodedFile);String encryptedString = MainActivity.encrypt(encodedFile, secretKey) ;
 
                 EditText editText = findViewById(R.id.edit_text);
-                editText.setText(encryptedString, TextView.BufferType.EDITABLE);
 
-            } catch (FileNotFoundException e) {
+
+               Thread one = new Thread() {
+                    public void run() {
+                        try {
+                            System.out.println("Does it work?");
+                            editText.setText(encryptedString, TextView.BufferType.EDITABLE);
+                            ClipboardManager clipboard = (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
+                            ClipData clip = ClipData.newPlainText("label", encryptedString);
+                            clipboard.setPrimaryClip(clip);
+                            Thread.sleep(1000);
+
+                            System.out.println("Nope, it doesnt...again.");
+                        } catch(InterruptedException v) {
+                            System.out.println(v);
+                        }
+                    }
+                };
+
+                one.start();
+
+
+                } catch (FileNotFoundException e) {
                 e.printStackTrace();
             } catch (IOException e) {
                 e.printStackTrace();

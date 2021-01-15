@@ -8,8 +8,8 @@
 
     <EditText
         android:id="@+id/edit_text"
-        android:layout_width="325dp"
-        android:layout_height="49dp"
+        android:layout_width="360dp"
+        android:layout_height="105dp"
         android:layout_marginStart="42dp"
         android:layout_marginLeft="42dp"
         android:layout_marginTop="164dp"
@@ -18,7 +18,8 @@
         android:layout_marginBottom="44dp"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="Name"
+        android:text="THISwillBEcopiedTOyourClipboardAUTOMATICALLY"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
         app:layout_constraintBottom_toTopOf="@+id/imageView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.166"
@@ -71,11 +72,11 @@
         android:layout_marginBottom="20dp"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="Name"
         app:layout_constraintBottom_toTopOf="@+id/button2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+        app:layout_constraintTop_toBottomOf="@+id/imageView"
+        tools:text="PASTE CODE HERE" />
 
     <Button
         android:id="@+id/button2"
